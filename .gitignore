@@ -1,5 +1,9 @@
 .DS_Store
 
-.agents
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/project/
+!.agents/skills/project/**
 .claude
 .cursor
