@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "skills-constitution": {
+      "source": "litingyes/skills",
+      "sourceType": "github",
+      "computedHash": "7156f82134b75805ed0fdef43e562b66c9d0bd99941c08b3bf7df13df0d3b6eb"
+    }
+  }
+}
