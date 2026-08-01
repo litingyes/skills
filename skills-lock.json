@@ -1,10 +1,11 @@
 {
   "version": 1,
   "skills": {
-    "skills-constitution": {
-      "source": "litingyes/skills",
+    "skill-creator": {
+      "source": "anthropics/skills",
       "sourceType": "github",
-      "computedHash": "7156f82134b75805ed0fdef43e562b66c9d0bd99941c08b3bf7df13df0d3b6eb"
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "computedHash": "5ea13a6d9f0d4bb694405d79acd00cadec0d21bb138c4dd10fcf3c500cb835c2"
     }
   }
 }
