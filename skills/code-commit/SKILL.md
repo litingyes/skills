@@ -1,11 +1,11 @@
 ---
 name: code-commit
-description: Generate a Conventional Commits v1.0.0 compliant git commit message for the current repository, then commit after explicit user confirmation. Use ONLY when the user explicitly invokes this skill or explicitly asks to generate/create a commit message — do NOT auto-trigger for general git questions, coding tasks, or other file edits.
+description: Generate a Conventional Commits v1.0.0 compliant git commit message for the current repository, then commit it immediately. Use ONLY when the user explicitly invokes this skill or explicitly asks to generate/create a commit message — do NOT auto-trigger for general git questions, coding tasks, or other file edits.
 ---
 
 # Code Commit
 
-Generate a git commit message following the Conventional Commits 1.0.0 specification for the current repository, then commit after explicit user confirmation.
+Generate a git commit message following the Conventional Commits 1.0.0 specification for the current repository, then commit it immediately. Ask for confirmation only before staging otherwise unstaged or untracked files.
 
 **This skill is manually invoked only.** Do not use it unless the user explicitly asks for it or explicitly asks to generate a commit message. If the user just wants general git help, answer without using this skill.
 
@@ -47,21 +47,17 @@ Generate a git commit message following the Conventional Commits 1.0.0 specifica
    - **Breaking changes**: if the change introduces a breaking API change, append `!` to the type/scope prefix (e.g., `feat(api)!: ...`) and/or add a footer: `BREAKING CHANGE: <description>`.
    - **Footers**: optional. Use git-trailer style, e.g., `Refs: #123`, `Closes: #456`. Footers must be separated from the body by one blank line.
 
-6. **Present the commit message to the user and ask for confirmation**.
+6. **Present the final commit message and proceed without confirmation**.
    - Show the exact message that will be used.
-   - Ask the user with a `question`:
-     - **Commit**: execute the commit.
-     - **Edit**: let the user provide changes, then regenerate/confirm again.
-     - **Cancel**: stop without committing.
+   - Do not ask the user whether to commit, whether to edit the message, or whether to cancel.
 
-7. **Commit** if the user confirms.
+7. **Commit immediately**.
    - Use `git commit -m "<subject>" -m "<body>" ...` or another safe method to preserve newlines and footers. Avoid `git commit -m` with a single string containing literal newlines unless you can do so safely.
    - After committing, report the commit hash and short summary.
 
 ## Important Notes
 
-- Do not commit without user confirmation.
 - Do not auto-stage changes without user approval.
-- If the user asks to cancel at any point, stop immediately and do nothing.
+- If the user cancels during the staging decision, stop immediately and do nothing.
 - Do not include irrelevant metadata, signatures, or markdown formatting in the final commit message.
 - Prefer `feat:` or `fix:` over `chore:` when the change clearly introduces a feature or fixes a bug.
